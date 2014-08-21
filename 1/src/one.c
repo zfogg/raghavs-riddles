@@ -25,7 +25,8 @@ int partition(int* list, int left, int right, int pivotIndex) {
 }
 
 
-int select(int* list, int left, int right, int n) { if (left == right) return list[left];
+int select(int* list, int left, int right, int n) {
+    if (left == right) return list[left];
     while (1) {
         int pivotIndex = right / 2 - left / 2;
         pivotIndex = partition(list, left, right, pivotIndex);
