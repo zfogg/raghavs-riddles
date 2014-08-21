@@ -10,7 +10,7 @@
 int main(int argc, const char* argv[]) {
     srand(time(NULL));
     printf("\n");
-    printf("median: %d\n", median(list, 19));
+    printf("median: %d\n", median(list, sizeof list / sizeof list[0]));
     return 0;
 }
 
