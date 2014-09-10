@@ -12,17 +12,17 @@ int randBetween(int min, int max) {
 
 int partition(int* list, int left, int right, int pivotIndex) {
     int pivotValue = list[pivotIndex];
-    SWAP(pivotIndex, right);
     int storeIndex = left;
 
-    for (int i = left; i < right; i++) {
+    SWAP(list[pivotIndex], list[right]);
+
+    for (int i = left; i < right; i++)
         if (list[i] < pivotValue) {
-            SWAP(storeIndex, i);
+            SWAP(list[storeIndex], list[i]);
             storeIndex++;
         }
-    }
 
-    SWAP(right, storeIndex);
+    SWAP(list[right], list[storeIndex]);
     return storeIndex;
 }
 
@@ -32,14 +32,14 @@ int select(int* list, int left, int right, int n) {
         return list[left];
 
     while (1) {
-        int pivotIndex = partition(list, left, right, randBetween(left, right));
-        if (n == pivotIndex) {
+        int randomIndex = randBetween(left, right),
+            pivotIndex  = partition(list, left, right, randomIndex);
+        if (n == pivotIndex)
             return list[n];
-        } else if (n < pivotIndex) {
+        else if (n < pivotIndex)
             right = pivotIndex - 1;
-        } else {
+        else
             left = pivotIndex;
-        }
     }
 }
 

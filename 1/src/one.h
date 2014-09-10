@@ -1,13 +1,26 @@
+#ifndef ONE_H
+#define ONE_H
 
-int _tmp$;
-#define SWAP(a, b) { _tmp$ = list[a]; list[a] = list[b]; list[b] = _tmp$; }
+
+#ifndef SWAP
+#define SWAP(a, b) \
+    do { \
+        int t = a; \
+        a = b; \
+        b = t; \
+    } while (0);
+#endif
+
+
+static int partition(int* list, int left, int right, int pivotIndex);
+
+static int select(int* list, int left, int right, int n);
 
 
 int randBetween(int min, int max);
 
-int partition(int* list, int left, int right, int pivotIndex);
-
-int select(int* list, int left, int right, int n);
-
 int median(int* list, int size);
+
+
+#endif /* ONE_H */
 
